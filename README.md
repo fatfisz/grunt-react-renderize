@@ -52,9 +52,8 @@ Default value: empty string
 
 Used as a separator when joining multiple rendered components.
 
-### Usage Examples
+### Usage Example
 
-#### Default Options
 This should render the component from a file into Grunt config.
 
 ```js
