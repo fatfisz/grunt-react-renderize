@@ -1,0 +1,39 @@
+{
+  "name": "grunt-react-renderize",
+  "version": "0.0.0",
+  "description": "Render React components into Grunt config.",
+  "keywords": [
+    "grunt",
+    "react",
+    "render",
+    "config"
+  ],
+  "homepage": "https://github.com/fatfisz/grunt-react-renderize",
+  "repository": "https://github.com/fatfisz/grunt-react-renderize.git",
+  "author": {
+    "name": "FatFisz",
+    "url": "https://github.com/fatfisz"
+  },
+  "license": "MIT",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "dependencies": {
+    "react": "^0.12.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-nodeunit": "~0.3.0",
+    "grunt": "~0.4.2",
+    "jshint-stylish": "~0.1.5",
+    "load-grunt-tasks": "~0.3.0"
+  }
+}
