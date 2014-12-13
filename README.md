@@ -55,7 +55,7 @@ Used as a separator when joining multiple rendered components.
 ### Usage Examples
 
 #### Default Options
-Rendering the component from a file into Grunt config.
+This should render the component from a file into Grunt config.
 
 ```js
 grunt.initConfig({
