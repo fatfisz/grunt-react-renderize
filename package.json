@@ -1,6 +1,6 @@
 {
   "name": "grunt-react-renderize",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Render React components into Grunt config.",
   "keywords": [
     "grunt",
