@@ -11,7 +11,6 @@
 module.exports = function (grunt) {
 
   var path = require('path');
-  var React = require('react');
 
   var defaults = {
     separator: '',
@@ -29,7 +28,7 @@ module.exports = function (grunt) {
   var renderComponentFromFile = function (filepath) {
     var absoluteSrc = path.resolve(filepath);
     var component = require(absoluteSrc);
-    return React.renderToStaticMarkup(component);
+    return require('react').renderToStaticMarkup(component);
   };
 
   grunt.registerMultiTask('react_renderize', 'Render React components into Grunt config.', function () {

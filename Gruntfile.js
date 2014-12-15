@@ -28,6 +28,12 @@ module.exports = function (grunt) {
       tests: ['tmp'],
     },
 
+    env: {
+      test: {
+        NODE_ENV: 'production',
+      },
+    },
+
     react_renderize: {
       single_unordered_list: {
         files: {
@@ -75,7 +81,7 @@ module.exports = function (grunt) {
   // And reload it again
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('test', ['clean', 'react_renderize', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'env', 'react_renderize', 'nodeunit']);
 
   grunt.registerTask('default', ['jshint', 'test']);
 

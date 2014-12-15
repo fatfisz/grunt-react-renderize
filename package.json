@@ -1,6 +1,6 @@
 {
   "name": "grunt-react-renderize",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Render React components into Grunt config.",
   "keywords": [
     "grunt",
@@ -29,10 +29,11 @@
     "grunt": "~0.4.2"
   },
   "devDependencies": {
+    "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-nodeunit": "~0.3.0",
-    "grunt": "~0.4.2",
+    "grunt-env": "^0.4.2",
     "jshint-stylish": "~0.1.5",
     "load-grunt-tasks": "~0.3.0"
   }

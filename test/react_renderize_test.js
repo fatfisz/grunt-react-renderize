@@ -53,7 +53,15 @@ exports.react_renderize = {
       grunt: true,
       args: ['react_renderize_fail:not_component', '--no-color'],
     }, function (err, result) {
-      test.ok(result.stdout.indexOf('You must pass a valid ReactElement') !== -1,
+      test.ok(
+        // This will happen when NODE_ENV !== 'production'
+        result.stdout.indexOf('You must pass a valid ReactElement') !== -1 ||
+        // This will happen when NODE_ENV === 'production'
+        // Only the value of `ReactElement.isValidElement(element)` will be
+        // passed as an argument to the `invariant` function. If this is true,
+        // nothing should happen. Otherwise there will be an error.
+        //
+        result.stdout.indexOf('Minified exception occurred') !== -1,
         'test should fail because the required module is not a valid component.');
 
       test.done();
