@@ -30,7 +30,7 @@ module.exports = React.createElement('p', null, 'I need this in my template.');
 
 and a Jade template:
 ```jade
-div!=prerenderedBody
+div!=prerenderedMarkup
 ```
 
 The result, after providing `'jade.options.data.prerenderedMarkup'` as a destination for the task, would be:
@@ -65,6 +65,8 @@ grunt.initConfig({
   },
 })
 ```
+
+The rendered component will be available through grunt.config.get('template_engine.options.data.component')).
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
