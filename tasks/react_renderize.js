@@ -28,7 +28,13 @@ module.exports = function (grunt) {
   var renderComponentFromFile = function (filepath) {
     var absoluteSrc = path.resolve(filepath);
     var component = require(absoluteSrc);
-    return require('react').renderToStaticMarkup(component);
+    var React = require('react');
+
+    if (!React.isValidElement(component)) {
+      // try to create an element first
+      component = React.createElement(component);
+    }
+    return React.renderToStaticMarkup(component);
   };
 
   grunt.registerMultiTask('react_renderize', 'Render React components into Grunt config.', function () {

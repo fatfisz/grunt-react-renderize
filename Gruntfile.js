@@ -28,44 +28,54 @@ module.exports = function (grunt) {
       tests: ['tmp'],
     },
 
-    env: {
-      test: {
-        NODE_ENV: 'production',
-      },
-    },
-
     react_renderize: {
-      single_unordered_list: {
-        files: {
-          'test_result.single_unordered_list': 'test/fixtures/unordered_list.js',
-        },
+      single_element: {
+        src: 'test/fixtures/element.js',
+        dest: 'test_result.single_element',
       },
-      two_components: {
-        files: {
-          'test_result.two_components': [
-            'test/fixtures/unordered_list.js',
-            'test/fixtures/paragraph.js',
-          ],
-        },
+      two_elements: {
+        src: [
+          'test/fixtures/element.js',
+          'test/fixtures/element2.js',
+        ],
+        dest: 'test_result.two_elements',
       },
-      two_components_br_separator: {
+      two_elements_br_separator: {
         options: {
           separator: '<br>',
         },
-        files: {
-          'test_result.two_components_br_separator': [
-            'test/fixtures/unordered_list.js',
-            'test/fixtures/paragraph.js',
-          ],
-        },
+        src: [
+          'test/fixtures/element.js',
+          'test/fixtures/element2.js',
+        ],
+        dest: 'test_result.two_elements_br_separator',
+      },
+      component: {
+        src: 'test/fixtures/component.js',
+        dest: 'test_result.component',
+      },
+      tag: {
+        src: 'test/fixtures/tag.js',
+        dest: 'test_result.tag',
       },
     },
 
+    // `dest` doesn't need to be set - errors will be thrown before it is needed
     react_renderize_fail: {
-      not_component: {
-        files: {
-          'test_result.not_component': 'test/fixtures/not_component.js',
-        },
+      not_a_function: {
+        src: 'test/fixtures/invalid/not_a_function.js',
+      },
+      invalid_tag: {
+        src: 'test/fixtures/invalid/invalid_tag.js',
+      },
+      function_returns_invalid_value: {
+        src: 'test/fixtures/invalid/function_returns_invalid_value.js',
+      },
+      missing_render_method: {
+        src: 'test/fixtures/invalid/missing_render_method.js',
+      },
+      invalid_render_result: {
+        src: 'test/fixtures/invalid/invalid_render_result.js',
       },
     },
 
@@ -81,7 +91,7 @@ module.exports = function (grunt) {
   // And reload it again
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('test', ['clean', 'env', 'react_renderize', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'react_renderize', 'nodeunit']);
 
   grunt.registerTask('default', ['jshint', 'test']);
 
