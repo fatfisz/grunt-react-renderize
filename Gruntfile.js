@@ -60,22 +60,33 @@ module.exports = function (grunt) {
       },
     },
 
-    // `dest` doesn't need to be set - errors will be thrown before it is needed
     react_renderize_fail: {
       not_a_function: {
         src: 'test/fixtures/invalid/not_a_function.js',
+        dest: 'nowhere',
       },
       invalid_tag: {
         src: 'test/fixtures/invalid/invalid_tag.js',
+        dest: 'nowhere',
       },
       function_returns_invalid_value: {
         src: 'test/fixtures/invalid/function_returns_invalid_value.js',
+        dest: 'nowhere',
       },
       missing_render_method: {
         src: 'test/fixtures/invalid/missing_render_method.js',
+        dest: 'nowhere',
       },
       invalid_render_result: {
         src: 'test/fixtures/invalid/invalid_render_result.js',
+        dest: 'nowhere',
+      },
+      no_src: {},
+      nonexistent_src: {
+        src: 'nowhere',
+      },
+      no_dest: {
+        src: 'test/fixtures/component.js',
       },
     },
 

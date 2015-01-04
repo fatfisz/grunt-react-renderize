@@ -140,4 +140,46 @@ exports.react_renderize = {
     });
   },
 
+  no_src: function (test) {
+    test.expect(1);
+
+    grunt.util.spawn({
+      grunt: true,
+      args: ['react_renderize_fail:no_src', '--no-color'],
+    }, function (err, result) {
+      test.notEqual(result.stdout.indexOf('Warning: No source files specified.'), -1,
+        'test should fail because no source files are specified.');
+
+      test.done();
+    });
+  },
+
+  nonexistent_src: function (test) {
+    test.expect(1);
+
+    grunt.util.spawn({
+      grunt: true,
+      args: ['react_renderize_fail:nonexistent_src', '--no-color'],
+    }, function (err, result) {
+      test.notEqual(result.stdout.indexOf('Warning: No source files found.'), -1,
+        'test should fail because source files don\'t exist.');
+
+      test.done();
+    });
+  },
+
+  no_dest: function (test) {
+    test.expect(1);
+
+    grunt.util.spawn({
+      grunt: true,
+      args: ['react_renderize_fail:no_dest', '--no-color'],
+    }, function (err, result) {
+      test.notEqual(result.stdout.indexOf('Fatal error: No destination is set.'), -1,
+        'test should fail because no destination is set.');
+
+      test.done();
+    });
+  },
+
 };
