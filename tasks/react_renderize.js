@@ -16,15 +16,6 @@ module.exports = function (grunt) {
     separator: '',
   };
 
-  var filterFiles = function (filepath) {
-    if (!grunt.file.exists(filepath)) {
-      grunt.log.warn('Source file ' + filepath.cyan + ' not found.');
-      return false;
-    } else {
-      return true;
-    }
-  };
-
   var renderComponentFromFile = function (filepath) {
     var absoluteSrc = path.resolve(filepath);
     var component = require(absoluteSrc);
@@ -42,8 +33,7 @@ module.exports = function (grunt) {
     var normalizedSeparator = grunt.util.normalizelf(options.separator);
 
     this.files.forEach(function (file) {
-      var result = file.src.filter(filterFiles)
-        .map(renderComponentFromFile)
+      var result = file.src.map(renderComponentFromFile)
         .join(normalizedSeparator);
 
       var dest = file.dest;
