@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   var path = require('path');
 
   var defaults = {
+    renderToFile: false,
     removeReactAttrs: true,
     separator: '',
   };
@@ -57,8 +58,13 @@ module.exports = function (grunt) {
       var result = file.src.map(renderComponentFromFile.bind(null, renderingFn))
         .join(normalizedSeparator);
 
-      grunt.config.set(dest, result);
-      grunt.log.writeln('Config value ' + dest.bold + ' set.');
+      if (options.renderToFile) {
+        grunt.file.write(dest, result);
+        grunt.log.writeln('Rendered into ' + dest.cyan + ' file.');
+      } else {
+        grunt.config.set(dest, result);
+        grunt.log.writeln('Rendered into ' + dest.bold + ' config value.');
+      }
     });
   });
 

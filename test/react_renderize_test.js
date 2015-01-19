@@ -72,6 +72,17 @@ exports.react_renderize = {
     test.done();
   },
 
+  render_to_file: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/element.html');
+    var expected = React.renderToStaticMarkup(element);
+    test.equal(actual, expected,
+      'should render an element to a file.');
+
+    test.done();
+  },
+
   leave_react_attrs: function (test) {
     test.expect(2);
 

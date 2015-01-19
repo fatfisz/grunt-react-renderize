@@ -56,6 +56,11 @@ module.exports = function (grunt) {
         src: 'test/fixtures/tag.js',
         dest: 'test_result.tag',
       },
+      render_to_file: {
+        options: { renderToFile: true },
+        src: 'test/fixtures/element.js',
+        dest: 'tmp/element.html',
+      },
       leave_react_attrs: {
         options: { removeReactAttrs: false },
         src: 'test/fixtures/element.js',

@@ -1,6 +1,6 @@
 # grunt-react-renderize
 
-> Render React components into Grunt config.
+> Render React components into Grunt config or files.
 
 ## Getting Started
 This plugin requires Grunt.
@@ -20,7 +20,10 @@ grunt.loadNpmTasks('grunt-react-renderize');
 ## The "react_renderize" task
 
 ### Overview
-This plugin allows you to render a React component from file into Grunt config. This value can be then used with a template engine of your choosing, that allows providing data to templates through the config. For example let's assume you have a React module:
+This plugin allows you to render a React component from file into Grunt config or a file.
+
+#### Rendering to a config value
+Rendered value can be used with any template engine that allows providing data to templates through the config. For example let's assume you have a React module:
 
 ```js
 var React = require('react');
@@ -39,7 +42,29 @@ The result, after providing `'jade.options.data.prerenderedMarkup'` as a destina
 <div><p>I need this in my template.</p></div>
 ```
 
+#### Rendering into a file
+This, of course, outputs the result of the rendering to a file. The option `renderToFile` works best with the option `banner` if you are rendering a whole document - you can provide the doctype through it.
+So React module:
+
+```js
+var React = require('react');
+
+module.exports = React.createElement('body', null, 'I like to move it.');
+
+with option `renderToFile` set to true and option `banner` set to `'<!doctype html>'` will result in a file with a content:
+
+```html
+<!doctype html><body>I like to move it.</body>
+```
+
 ### Options
+
+#### options.renderToFile
+Type: `Boolean`
+Default value: false
+
+When this option is set to true, the result will be rendered to a file instead of a Grunt config value.
+Since a config value name can be similar to a file name, this option is safer than any is-that-a-filename-or-not heuristics.
 
 #### options.removeReactAttrs
 Type: `Boolean`
