@@ -39,12 +39,17 @@ The result, after providing `'jade.options.data.prerenderedMarkup'` as a destina
 <div><p>I need this in my template.</p></div>
 ```
 
-### Motivation
-I wanted to prerender the React components and reuse them in Jade templates. This gives me the freedom to apply any filter to the rendered markup. The only way I knew to do this was by setting the Grunt config. Thus the plugin was born.
-
-If you know of a better way to solve this problem, please contact me :)
-
 ### Options
+
+#### options.removeReactAttrs
+Type: `Boolean`
+Default value: true
+
+If set to true, then `data-react*` attributes won't be present in the rendered markup (`renderToStaticMarkup` will be used instead of `renderToString`).
+
+With no `data-react*` attributes React won't be able to reuse the rendered data in the browser and will replace `innerHTML` of the target container, which is not quite optimal.
+
+*The default value is set to true for backward compatibility and will be set to false in the next major release.*
 
 #### options.separator
 Type: `String`
@@ -67,6 +72,11 @@ grunt.initConfig({
 ```
 
 The rendered component will be available through grunt.config.get('template_engine.options.data.component')).
+
+## Motivation
+I wanted to prerender the React components and reuse them in Jade templates. This gives me the freedom to apply any filter to the rendered markup. The only way I knew to do this was by setting the Grunt config. Thus the plugin was born.
+
+If you know of a better way to solve this problem, please contact me :)
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

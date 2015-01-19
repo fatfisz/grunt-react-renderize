@@ -13,10 +13,11 @@ module.exports = function (grunt) {
   var path = require('path');
 
   var defaults = {
+    removeReactAttrs: true,
     separator: '',
   };
 
-  var renderComponentFromFile = function (filepath) {
+  var renderComponentFromFile = function (renderingFn, filepath) {
     var absoluteSrc = path.resolve(filepath);
     var component = require(absoluteSrc);
     var React = require('react');
@@ -25,12 +26,14 @@ module.exports = function (grunt) {
       // try to create an element first
       component = React.createElement(component);
     }
-    return React.renderToStaticMarkup(component);
+
+    return React[renderingFn](component);
   };
 
   grunt.registerMultiTask('react_renderize', 'Render React components into Grunt config.', function () {
     var options = this.options(defaults);
     var normalizedSeparator = grunt.util.normalizelf(options.separator);
+    var renderingFn = options.removeReactAttrs ? 'renderToStaticMarkup' : 'renderToString';
 
     if (this.files.length === 0) {
       // For when user didn't specify any files in the config
@@ -51,7 +54,7 @@ module.exports = function (grunt) {
         grunt.fail.fatal('No destination is set.');
       }
 
-      var result = file.src.map(renderComponentFromFile)
+      var result = file.src.map(renderComponentFromFile.bind(null, renderingFn))
         .join(normalizedSeparator);
 
       grunt.config.set(dest, result);

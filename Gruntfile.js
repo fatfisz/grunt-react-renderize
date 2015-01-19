@@ -41,9 +41,7 @@ module.exports = function (grunt) {
         dest: 'test_result.two_elements',
       },
       two_elements_br_separator: {
-        options: {
-          separator: '<br>',
-        },
+        options: { separator: '<br>' },
         src: [
           'test/fixtures/element.js',
           'test/fixtures/element2.js',
@@ -57,6 +55,11 @@ module.exports = function (grunt) {
       tag: {
         src: 'test/fixtures/tag.js',
         dest: 'test_result.tag',
+      },
+      leaveReactAttrs: {
+        options: { removeReactAttrs: false },
+        src: 'test/fixtures/element.js',
+        dest: 'test_result.with_attrs',
       },
     },
 

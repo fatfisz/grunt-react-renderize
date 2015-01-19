@@ -1,7 +1,9 @@
 'use strict';
 
 var grunt = require('grunt');
-var React = require('React');
+var React = require('react');
+var ReactIdAttrName = require('react/lib/DOMProperty').ID_ATTRIBUTE_NAME;
+var ReactChecksumAttrName = require('react/lib/ReactMarkupChecksum').CHECKSUM_ATTR_NAME;
 
 // Components used in tests
 var element = require('./fixtures/element');
@@ -66,6 +68,18 @@ exports.react_renderize = {
     var expected = React.renderToStaticMarkup(React.createElement(tag));
     test.equal(actual, expected,
       'should render one tag.');
+
+    test.done();
+  },
+
+  leaveReactAttrs: function (test) {
+    test.expect(2);
+
+    var actual = grunt.config.get('test_result.with_attrs');
+    test.notEqual(actual.indexOf(ReactIdAttrName), -1,
+      'should render an element with at least one React id attribute.');
+    test.notEqual(actual.indexOf(ReactChecksumAttrName), -1,
+      'should render an element with at least one React checksum attribute.');
 
     test.done();
   },
