@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         src: 'test/fixtures/tag.js',
         dest: 'test_result.tag',
       },
-      leaveReactAttrs: {
+      leave_react_attrs: {
         options: { removeReactAttrs: false },
         src: 'test/fixtures/element.js',
         dest: 'test_result.with_attrs',

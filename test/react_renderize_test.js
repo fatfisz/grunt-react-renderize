@@ -72,7 +72,7 @@ exports.react_renderize = {
     test.done();
   },
 
-  leaveReactAttrs: function (test) {
+  leave_react_attrs: function (test) {
     test.expect(2);
 
     var actual = grunt.config.get('test_result.with_attrs');
