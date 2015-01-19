@@ -10,6 +10,9 @@ var element = require('./fixtures/element');
 var element2 = require('./fixtures/element2');
 var component = require('./fixtures/component');
 var tag = require('./fixtures/tag');
+var body = require('./fixtures/body');
+var banner = grunt.file.read('test/fixtures/banner.txt');
+var footer = grunt.file.read('test/fixtures/footer.txt');
 
 exports.react_renderize = {
 
@@ -79,6 +82,28 @@ exports.react_renderize = {
     var expected = React.renderToStaticMarkup(element);
     test.equal(actual, expected,
       'should render an element to a file.');
+
+    test.done();
+  },
+
+  with_banner: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/body_with_banner.html');
+    var expected = grunt.template.process(banner) + React.renderToStaticMarkup(body);
+    test.equal(actual, expected,
+      'should render an element prefixed with a banner to a file.');
+
+    test.done();
+  },
+
+  with_footer: function (test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/body_with_footer.html');
+    var expected = React.renderToStaticMarkup(body) + grunt.template.process(footer);
+    test.equal(actual, expected,
+      'should render an element suffixed witha a footer to a file.');
 
     test.done();
   },

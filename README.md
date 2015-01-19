@@ -50,6 +50,7 @@ So React module:
 var React = require('react');
 
 module.exports = React.createElement('body', null, 'I like to move it.');
+```
 
 with option `renderToFile` set to true and option `banner` set to `'<!doctype html>'` will result in a file with a content:
 
@@ -65,6 +66,22 @@ Default value: false
 
 When this option is set to true, the result will be rendered to a file instead of a Grunt config value.
 Since a config value name can be similar to a file name, this option is safer than any is-that-a-filename-or-not heuristics.
+
+#### options.banner
+Type: `String`
+Default: empty string
+
+This string will be prepended to the beginning of the concatenated output. It is processed using [grunt.template.process][], using the default options.
+
+_(Default processing options are explained in the [grunt.template.process][] documentation)_
+
+#### options.footer
+Type: `String`
+Default: empty string
+
+This string will be appended to the end of the concatenated output. It is processed using [grunt.template.process][], using the default options.
+
+_(Default processing options are explained in the [grunt.template.process][] documentation)_
 
 #### options.removeReactAttrs
 Type: `Boolean`
@@ -108,3 +125,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 Copyright (c) 2014 FatFisz. Licensed under the MIT license.
+
+[grunt.template.process]: https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md#grunttemplateprocess

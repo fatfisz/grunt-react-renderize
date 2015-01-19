@@ -61,6 +61,22 @@ module.exports = function (grunt) {
         src: 'test/fixtures/element.js',
         dest: 'tmp/element.html',
       },
+      with_banner: {
+        options: {
+          renderToFile: true,
+          banner: grunt.file.read('test/fixtures/banner.txt'),
+        },
+        src: 'test/fixtures/body.js',
+        dest: 'tmp/body_with_banner.html',
+      },
+      with_footer: {
+        options: {
+          renderToFile: true,
+          footer: grunt.file.read('test/fixtures/footer.txt'),
+        },
+        src: 'test/fixtures/body.js',
+        dest: 'tmp/body_with_footer.html',
+      },
       leave_react_attrs: {
         options: { removeReactAttrs: false },
         src: 'test/fixtures/element.js',
