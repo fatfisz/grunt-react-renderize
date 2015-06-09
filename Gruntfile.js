@@ -30,10 +30,12 @@ module.exports = function (grunt) {
 
     react_renderize: {
       single_element: {
+        options: { removeReactAttrs: true },
         src: 'test/fixtures/element.js',
         dest: 'test_result.single_element',
       },
       two_elements: {
+        options: { removeReactAttrs: true },
         src: [
           'test/fixtures/element.js',
           'test/fixtures/element2.js',
@@ -41,7 +43,10 @@ module.exports = function (grunt) {
         dest: 'test_result.two_elements',
       },
       two_elements_br_separator: {
-        options: { separator: '<br>' },
+        options: {
+          separator: '<br>',
+          removeReactAttrs: true,
+        },
         src: [
           'test/fixtures/element.js',
           'test/fixtures/element2.js',
@@ -49,15 +54,20 @@ module.exports = function (grunt) {
         dest: 'test_result.two_elements_br_separator',
       },
       component: {
+        options: { removeReactAttrs: true },
         src: 'test/fixtures/component.js',
         dest: 'test_result.component',
       },
       tag: {
+        options: { removeReactAttrs: true },
         src: 'test/fixtures/tag.js',
         dest: 'test_result.tag',
       },
       render_to_file: {
-        options: { renderToFile: true },
+        options: {
+          renderToFile: true,
+          removeReactAttrs: true,
+        },
         src: 'test/fixtures/element.js',
         dest: 'tmp/element.html',
       },
@@ -65,6 +75,7 @@ module.exports = function (grunt) {
         options: {
           renderToFile: true,
           banner: grunt.file.read('test/fixtures/banner.txt'),
+          removeReactAttrs: true,
         },
         src: 'test/fixtures/body.js',
         dest: 'tmp/body_with_banner.html',
@@ -73,12 +84,12 @@ module.exports = function (grunt) {
         options: {
           renderToFile: true,
           footer: grunt.file.read('test/fixtures/footer.txt'),
+          removeReactAttrs: true,
         },
         src: 'test/fixtures/body.js',
         dest: 'tmp/body_with_footer.html',
       },
       leave_react_attrs: {
-        options: { removeReactAttrs: false },
         src: 'test/fixtures/element.js',
         dest: 'test_result.with_attrs',
       },

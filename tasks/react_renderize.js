@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     renderToFile: false,
     banner: '',
     footer: '',
-    removeReactAttrs: true,
+    removeReactAttrs: false,
     separator: '',
   };
 
