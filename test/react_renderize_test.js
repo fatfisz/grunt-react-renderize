@@ -155,7 +155,7 @@ exports.react_renderize = {
       grunt: true,
       args: ['react_renderize_fail:function_returns_invalid_value', '--no-color'],
     }, function (err, result) {
-      test.notEqual(result.stdout.indexOf('You must pass a valid ReactElement'), -1,
+      test.notEqual(result.stdout.indexOf('is not a function'), -1,
         'test should fail because exported function doesn\'t return a valid ReactElement.');
 
       test.done();
